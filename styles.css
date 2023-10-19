@@ -1,0 +1,11 @@
+.container {
+    width: 300px;
+    height: 600px;
+    background-color: aquamarine;
+    margin: 20px;
+}
+
+#person-img {
+    width: 200px;
+    height: 300px;
+}
