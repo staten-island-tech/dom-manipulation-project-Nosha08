@@ -10,6 +10,7 @@ const HTMLSelectors = {
     HTMLname: document.querySelector('#person-name'),
     HTMLimg: document.querySelector('#person-img'),
     HTMLdesc: document.querySelector('#person-desc'),
+    remove: document.querySelector('#remove')
 }
 
 DOMSelectors.form.addEventListener('submit', function (event) {
@@ -36,9 +37,13 @@ function inject(person) {
 }
 
 function clear() {
-    
+    HTMLSelectors.HTMLname.innerHTML = ''
+    HTMLSelectors.HTMLimg.innerHTML = ''
+    HTMLSelectors.HTMLdesc.innerHTML = ''
 }
 
 function remove() {
-
+    HTMLSelectors.remove.addEventListener('click', function (event) {
+        HTMLSelectors.container.remove()
+    })
 }
