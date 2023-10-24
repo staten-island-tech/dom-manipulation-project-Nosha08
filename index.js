@@ -25,6 +25,9 @@ function create() {
         desc: DOMSelectors.desc.value
     }
 
+    const newElement = document.createElement('div')
+    newElement.appendChild(person)
+
     inject(person)
     clear()
     remove()
@@ -37,9 +40,9 @@ function inject(person) {
 }
 
 function clear() {
-    HTMLSelectors.HTMLname.innerHTML = ''
-    HTMLSelectors.HTMLimg.innerHTML = ''
-    HTMLSelectors.HTMLdesc.innerHTML = ''
+    DOMSelectors.name.value = ''
+    DOMSelectors.img.value = ''
+    DOMSelectors.desc.value = ''
 }
 
 function remove() {
