@@ -25,9 +25,6 @@ function create() {
         desc: DOMSelectors.desc.value
     }
 
-    const newElement = document.createElement('div')
-    newElement.appendChild(person)
-
     inject(person)
     clear()
     remove()
