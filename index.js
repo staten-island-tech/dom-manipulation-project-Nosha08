@@ -24,18 +24,13 @@ function create() {
 }
 
 function inject(person) {
-    const personDiv = document.createElement('div');
-    personDiv.innerHTML = `
+    const personDiv = DOMSelectors.container.insertAdjacentHTML('beforebegin',`
     <div class="card">
         <h2 id="person-name">${person.name}</h2>
         <img id="person-img" src="${person.img}" alt="${person.name}">
         <p id="person-desc">${person.desc}</p>
         <button id="remove">Remove</button>
-    </div>
-    `;
-        
-    document.body.appendChild(personDiv)
-    DOMSelectors.container.appendChild(personDiv)
+    </div>`)
 
     remove(personDiv)
 }
