@@ -2,7 +2,8 @@ const DOMSelectors = {
     form: document.querySelector('.form'),
     name: document.querySelector('#name'),
     img: document.querySelector('#img'),
-    desc: document.querySelector('#desc')
+    desc: document.querySelector('#desc'),
+    container: document.querySelector('.container')
 }
 
 DOMSelectors.form.addEventListener('submit', function (event) {
@@ -19,7 +20,7 @@ function create() {
 
     inject(person)
     clear()
-    // remove()
+
 }
 
 function inject(person) {
@@ -33,13 +34,10 @@ function inject(person) {
     </div>
     `;
         
-    const removeButton = personDiv.querySelector('#remove')
     document.body.appendChild(personDiv)
+    DOMSelectors.container.appendChild(personDiv)
 
-    
-    removeButton.addEventListener('click', function (event) {
-        personDiv.remove()
-    });
+    remove(personDiv)
 }
 
 function clear() {
@@ -48,8 +46,10 @@ function clear() {
     DOMSelectors.desc.value = ''
 }
 
-/* function remove() {
-    HTMLSelectors.remove.addEventListener('click', function (event) {
-        HTMLSelectors.card.remove()
-    })
-} */
+function remove(personDiv) {
+    const removeButton = personDiv.querySelector('#remove')
+
+    removeButton.addEventListener('click', function () {
+        personDiv.remove()
+    });
+}
