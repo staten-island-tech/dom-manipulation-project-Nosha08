@@ -2,15 +2,8 @@ const DOMSelectors = {
     form: document.querySelector('.form'),
     name: document.querySelector('#name'),
     img: document.querySelector('#img'),
-    desc: document.querySelector('#desc')
-}
-
-const HTMLSelectors = {
-    container: document.querySelector('.container'),
-    HTMLname: document.querySelector('#person-name'),
-    HTMLimg: document.querySelector('#person-img'),
-    HTMLdesc: document.querySelector('#person-desc'),
-    remove: document.querySelector('#remove')
+    desc: document.querySelector('#desc'),
+    container: document.querySelector('.container')
 }
 
 DOMSelectors.form.addEventListener('submit', function (event) {
@@ -25,16 +18,21 @@ function create() {
         desc: DOMSelectors.desc.value
     }
 
-
     inject(person)
     clear()
-    remove()
+
 }
 
 function inject(person) {
-    HTMLSelectors.HTMLname.innerHTML = person.name
-    HTMLSelectors.HTMLimg.innerHTML = person.img
-    HTMLSelectors.HTMLdesc.innerHTML = person.desc
+    const personDiv = DOMSelectors.container.insertAdjacentHTML('beforebegin',`
+    <div class="card">
+        <h2 id="person-name">${person.name}</h2>
+        <img id="person-img" src="${person.img}" alt="${person.name}">
+        <p id="person-desc">${person.desc}</p>
+        <button id="remove">Remove</button>
+    </div>`)
+
+    remove(personDiv)
 }
 
 function clear() {
@@ -43,8 +41,10 @@ function clear() {
     DOMSelectors.desc.value = ''
 }
 
-function remove() {
-    HTMLSelectors.remove.addEventListener('click', function (event) {
-        HTMLSelectors.container.remove()
-    })
+function remove(personDiv) {
+    const removeButton = personDiv.querySelector('#remove')
+
+    removeButton.addEventListener('click', function () {
+        personDiv.remove()
+    });
 }
