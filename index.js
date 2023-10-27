@@ -6,10 +6,12 @@ const DOMSelectors = {
     container: document.querySelector('.container')
 }
 
+
 DOMSelectors.form.addEventListener('submit', function (event) {
     event.preventDefault()
     create()
 })
+
 
 function create() {
     const person = {
@@ -18,9 +20,9 @@ function create() {
         desc: DOMSelectors.desc.value
     }
 
+
     inject(person)
     clear()
-
 }
 
 function inject(person) {
@@ -32,9 +34,11 @@ function inject(person) {
         <button class="remove">Remove</button>
     </div>`)
 
+
     const personDiv = DOMSelectors.container.querySelector('.card');
     remove(personDiv)
 }
+
 
 function clear() {
     DOMSelectors.name.value = ''
@@ -42,10 +46,11 @@ function clear() {
     DOMSelectors.desc.value = ''
 }
 
+
 function remove(personDiv) {
     const removeButton = personDiv.querySelector('.remove')
 
-    removeButton.addEventListener('click', function () {
+    removeButton.addEventListener('click', function (event) {
         personDiv.remove()
     });
 }
