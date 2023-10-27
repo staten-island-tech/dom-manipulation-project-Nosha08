@@ -24,14 +24,15 @@ function create() {
 }
 
 function inject(person) {
-    const personDiv = DOMSelectors.container.insertAdjacentHTML('beforebegin',`
+    DOMSelectors.container.insertAdjacentHTML('afterbegin',`
     <div class="card">
         <h2 id="person-name">${person.name}</h2>
         <img id="person-img" src="${person.img}" alt="${person.name}">
         <p id="person-desc">${person.desc}</p>
-        <button id="remove">Remove</button>
+        <button class="remove">Remove</button>
     </div>`)
 
+    const personDiv = DOMSelectors.container.querySelector('.card');
     remove(personDiv)
 }
 
@@ -42,7 +43,7 @@ function clear() {
 }
 
 function remove(personDiv) {
-    const removeButton = personDiv.querySelector('#remove')
+    const removeButton = personDiv.querySelector('.remove')
 
     removeButton.addEventListener('click', function () {
         personDiv.remove()
