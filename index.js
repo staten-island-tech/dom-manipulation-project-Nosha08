@@ -20,7 +20,6 @@ function create() {
         desc: DOMSelectors.desc.value
     }
 
-
     inject(person)
     clear()
 }
